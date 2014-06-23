@@ -1,0 +1,278 @@
+@import 'nib' // CSS3 extensions for Stylus: http://visionmedia.github.io/nib/
+
+// variables!
+text_color = #000
+text_color_highlight = #FBAE48
+text_shadow_color = text_color
+background_color = #fff
+
+slide_width = 640px
+slide_height = 420px
+
+slide_transition_length = 0s// 0.8s
+slide_transition_easing = ease-in-out
+slide_transition_rotate_y = 45deg
+slide_transition_nudge_x = 0px
+
+bullet_transition_length = .1s
+bullet_transition_easing = ease-in
+bullet_transition_translate_x = 0px
+
+// base
+*
+  box-sizing: border-box
+  margin: 0
+  padding: 0
+
+body
+  background: background_color
+  color: text_color
+  font-family: "Helvetica neue", helvetica, arial, sans-serif
+  font-size: 18px
+
+
+@media print
+  *
+    -webkit-print-color-adjust: exact
+
+@page
+  size: landscape
+  margin: 0
+
+
+// bespoke.js layout styles
+article
+  //transition: background slide_transition_length slide_transition_easing
+  transform: translate3d(0, 0, 0)
+  display: none
+  &.bespoke-parent
+    display: block
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    overflow: hidden
+    @media print
+      overflow: visible
+      position: static
+      perspective: 600px
+
+.bespoke-slide
+  transition:
+    transform slide_transition_length slide_transition_easing,
+    opacity slide_transition_length slide_transition_easing,
+    background slide_transition_length slide_transition_easing
+  transform-origin: 50% 50% 0
+  backface-visibility: hidden
+  display: flex
+  flex-direction: column
+  //justify-content: start // aligns vertically to the top
+  justify-content: center // aligns vertically centered
+  align-items: left
+  align-self: flex-end;
+  width: slide_width
+  height: slide_height
+  position: absolute
+  top: 50%
+  margin-top: (slide_height / 2) * -1
+  left: 50%
+  margin-left: (slide_width / 2) * -1
+  background: slide_background
+  padding: 0px
+  border-radius: 0
+  @media print
+    zoom: 1 !important // disable bespoke-scale
+    height: 743px // seems to correspond with an A4, landscape page height
+    width: 100%
+    page-break-after: always
+    position: static
+    margin: 0
+
+
+.bespoke-before
+  transform: translateX(slide_transition_nudge_x * -1) translateX(slide_width / -2) rotateY(slide_transition_rotate_y * -1) translateX(slide_width / -2)
+  @media print
+    transform: none
+
+.bespoke-after
+  transform: translateX(slide_transition_nudge_x) translateX(slide_width / 2) rotateY(slide_transition_rotate_y) translateX(slide_width / 2)
+  @media print
+    transform: none
+
+.bespoke-inactive
+  opacity: 0
+  pointer-events: none
+  @media print
+    opacity 1
+
+.bespoke-active
+  opacity: 1
+
+
+// bespoke-bullet styles
+.bespoke-bullet
+  transition: opacity bullet_transition_length bullet_transition_easing
+
+.bespoke-bullet-inactive
+  opacity: 0
+  li&
+    transform: translateX(bullet_transition_translate_x)
+  @media print
+    opacity: 1
+
+.bespoke-bullet-active
+  opacity: 1
+
+
+// bespoke-scale styles
+.bespoke-scale-parent
+  perspective: 600px
+  //position: absolute // <-- that makes links not clickable in Firefox (?)
+  //top: 0             // <-- 
+  position: relative
+  top: 50%
+  left: 0
+  right: 0
+  bottom: 0
+  @media print
+    transform: none !important
+
+
+// bespoke-progress styles
+.bespoke-progress-parent
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  height: 10px
+  @media only screen and (min-width: 1366px)
+    height: 10px
+  @media print
+    display: none
+
+.bespoke-progress-bar
+  transition: width 1s ease-in-out
+  position: absolute
+  height: 100%
+  background: rgba(0, 0, 0, 0.05)
+
+
+// bespoke-state styles
+// AKA when sole went all mad about grids and borders
+
+fancy_border_style = 20px solid text_color
+fancy_border_padding = 15px
+fancy_border2_style = 10px solid text_color
+fancy_border2_padding = 20px
+
+
+.title > * > * > *:last-child
+  padding-bottom: fancy_border_padding
+  border-bottom: fancy_border_style
+
+.oneliner .bespoke-slide > *:first-child
+  border-top: fancy_border_style
+  padding-top: fancy_border_padding
+
+.list .bespoke-slide > h2:first-child
+  border-bottom: fancy_border2_style
+  padding-bottom: fancy_border2_padding
+
+
+.emphatic
+  // TODO
+
+.emphatic .bespoke-slide
+  justify-content: flex-end // to the bottom!
+  align-items: left
+
+
+.cover
+  background-position: center;
+  background-size: cover;
+
+.cover .bespoke-slide > *
+  background: rgba(background_color, 0.8)
+  padding: 15px
+
+
+.feature img
+  display: inline-block
+  max-height: 80%
+  max-width: 75%
+  width: auto
+  //max-width: 60%
+  //height: auto
+  //width: auto
+  -moz-object-fit: contain
+  object-fit: contain
+
+// prism styles
+
+pre
+  padding: 26px !important
+  border-radius: 8px
+
+  
+// content styles
+h1, h2, h3
+  font-weight: 500
+
+h1
+  font-size: 90px
+  line-height: 80px
+  letter-spacing: -7.5px
+  margin-bottom: 16px
+
+h2
+  font-size: 60px
+  line-height: 46px
+  letter-spacing: -1px
+  margin-bottom: 8px
+
+h3
+  font-size: 40px
+  margin-bottom: 6px
+  letter-spacing: -1px
+  line-height: 40px
+
+q
+  font-size: 30px
+  background: rgba(text_color, 0.05)
+  padding: 15px
+  margin: 5px 0
+
+hr
+  visibility: hidden
+  height: 20px
+
+ul
+  list-style-position: inside
+  list-style-type: none
+  margin: 10px 0
+
+ul.columns
+  columns: 3
+  -moz-columns: 3 
+
+li:before
+  content: ""
+  border-bottom: 2px solid black
+  height: 2px
+  width: 15px
+  margin-right: 8px
+  display: inline-block
+
+li
+  xmargin-bottom: 12px
+
+p
+  xline-height: 22px
+
+a
+  color: #0089f3
+  text-decoration: none
+
+.bespoke-slide aside
+  display: none

@@ -1,0 +1,231 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+    title Audio for the masses
+
+    // build:css styles/styles.css
+    //- Check out 'src/bower_components/prism/themes/' for available themes
+    link(rel='stylesheet', type='text/css', href='bower_components/prism/themes/prism-tomorrow.css')
+    link(rel='stylesheet', type='text/css', href='styles/sole.css')
+    // endbuild
+
+  body
+
+    article
+
+      section(data-bespoke-state='title')
+        h1 Audio for the masses
+        h2 Soledad Penadés
+        h3 @supersole
+
+      section(data-bespoke-state='emphatic', data-bespoke-fullscreenbackground='img/heypanda.jpg')
+        h2.bullet Apps Engineer, Mozilla
+
+
+      section(data-bespoke-state='emphatic', data-bespoke-fullscreenbackground='img/ukulele.jpg')
+        h2.bullet I ♥︎ music
+
+
+      section(data-bespoke-state='emphatic', data-bespoke-fullscreenbackground='img/harmonograph.jpg')
+        h2.bullet Old books
+
+
+      section(data-bespoke-state='emphatic', data-bespoke-fullscreenbackground='img/casiopt100.jpg')
+        h2.bullet Learning playground
+
+
+      section(data-bespoke-state='emphatic', data-bespoke-fullscreenbackground='img/it.png')
+        h2.bullet Computers + trackers
+
+
+      section(data-bespoke-state='emphatic', data-bespoke-fullscreenbackground='img/traxinspace.png')
+        h2.bullet Music communities
+
+
+      section(data-bespoke-state='emphatic', data-bespoke-fullscreenbackground='img/js1k-minecraft.png')
+        h2.bullet Size-limited coding
+
+
+      section(data-bespoke-state='emphatic', data-bespoke-fullscreenbackground='img/modular-routing.png')
+        h2.bullet Web Audio
+
+
+      section(data-bespoke-state='emphatic', data-bespoke-fullscreenbackground='img/sorollet.jpg')
+        h2.bullet JS Sound synthesiser
+
+
+      section(data-bespoke-state='emphatic', data-bespoke-fullscreenbackground='img/sorolletui.png')
+        h2.bullet Web Audio + APIs
+
+
+      section(data-bespoke-state='oneliner', data-bespoke-fullscreenbackground='img/modular.jpg')
+        h2.bullet Web Audio === easy<span class="bullet">?</span>
+
+
+      section(data-bespoke-state='list', data-bespoke-fullscreenbackground='img/oscillator.png')
+        h2.bullet <a href="examples/01_oscillator/">Oscillator</a>
+
+
+      section(data-bespoke-state='list', data-bespoke-fullscreenbackground='img/dragandplay.png')
+        h2.bullet <a href="examples/02_dragandplay/">Drag and Play</a>
+        ul.bullet
+          li Drag and Drop API
+          li File API
+          li Blobs + ArrayBuffer
+          li Analyser Node
+          li Canvas
+
+
+      section(data-bespoke-state='list', data-bespoke-fullscreenbackground='img/realtimevis.png')
+        h2.bullet <a href="examples/03_realtimevis/">Realtime visualisations</a>
+        ul.bullet
+          li Web Audio
+          li WebRTC
+          li Analyser Node
+          li WebGL
+
+
+      section
+        h2.bullet We shouldn’t stop here
+
+
+      section
+        h1.bullet Over two billion people still don’t have access to the Internet
+
+
+      section(data-bespoke-state='oneliner')
+        h1.bullet 2,000,000,000+
+
+
+      section(data-bespoke-fullscreenbackground='img/tarako.jpg')
+        h1 $25 phone
+
+
+      section(data-bespoke-state='list', data-bespoke-fullscreenbackground='img/firefoxos.jpg')
+        h2.bullet Firefox OS
+        ul.bullet
+          li Lower barrier of entry
+          li Write Once, Run Anywhere
+          li New Hardware APIs with JS
+
+      // TODO theremin.js
+
+      section
+        h1 So what about...
+
+
+      section(data-bespoke-state='list')
+        h2.bullet Simulating instruments
+        ul
+          li <a href="http://en.wikipedia.org/wiki/List_of_musical_instruments">This list</a>
+          li Just parameters, no sample data
+          li Interactive
+          li Touch + pressure
+          li Patch database
+          li A community of remixes
+          li Unusual contributions?<span class="bullet">! Yay!</span>
+
+
+      section(data-bespoke-state='list')
+        h2.bullet Unconventional composers
+        ul
+          li Existing = staff / drum machine based
+          li Missing nuances
+          li Record everything
+          li Make data available
+          li Let people build alternative notations
+          li Maybe local symbols
+          li A worldwide library of local songs!
+
+
+      section(data-bespoke-state='list')
+        h2.bullet Over the FM data transmission
+        ul
+          li Web FM API
+          li + Web Audio?
+          li ______________
+          li = decode data?
+
+
+      section(data-bespoke-state='list')
+        h2.bullet Over the FM data transmission
+        ul
+          li Bandwidth <span class="bullet">~0.65 Megabytes</span><span class="bullet">... per day</span>
+          li Not amazing<span class="bullet">, but still it’s like 4K SMS</span>
+          li Broadcasted = no slowdown when many users
+          li Precedents<span class="bullet">: national news</span><span class="bullet">, weather</span><span class="bullet">, complementary information about the programme</span>
+          li Local updates instead<span class="bullet">: status of water tanks</span><span class="bullet">, area weather forecasts...</span>
+          li Things that are <em>really important</em> for the people close to that FM station.
+
+
+      section
+        h1 These are just some examples...
+
+
+      section(data-bespoke-state='list')
+        h2 I might be terribly wrong.
+
+
+      // TODO apostrophe
+      section(data-bespoke-state='oneliner')
+        h2 Maybe 3D audio in games won’t solve non-Western issues.
+
+
+      section
+        h1.bullet However<span class="bullet">,</span>
+        h2.bullet we have a responsibility
+
+
+      section
+        h1.bullet To teach
+          span.bullet , make this accessible 
+          span.bullet and easy to use
+          span.bullet ...
+
+      section
+        h1.bullet ... and
+          span.bullet  keep experimenting
+          span.bullet , devising new ideas
+          span.bullet ...
+
+      section
+        h1.bullet ... and creating new code over which more Web Audio stuff can be built.
+
+
+      section
+        h3 We have a responsibility to teach, make this accessible and easy to use.
+        h3 And keep experimenting, devising new ideas and creating new code over which more Web Audio stuff can be built.
+
+
+      section
+        h1 Let’s do this together.
+
+
+
+      section(data-bespoke-state='title')
+        h1 Thanks!
+        h2 <a href="https://twitter.com/supersole">@supersole</a>
+        h3 <a href="http://soledadpenades.com">soledadpenades.com</a>
+
+
+
+
+      
+    // build:js scripts/scripts.js
+    script(src='bower_components/bespoke.js/dist/bespoke.min.js')
+    script(src='bower_components/bespoke-keys/dist/bespoke-keys.min.js')
+    script(src='bower_components/bespoke-touch/dist/bespoke-touch.min.js')
+    script(src='bower_components/bespoke-bullets/dist/bespoke-bullets.min.js')
+    script(src='bower_components/bespoke-scale/dist/bespoke-scale.min.js')
+    script(src='bower_components/bespoke-hash/dist/bespoke-hash.min.js')
+    script(src='bower_components/bespoke-progress/dist/bespoke-progress.min.js')
+    script(src='bower_components/bespoke-state/dist/bespoke-state.min.js')
+    script(src='bower_components/bespoke-fullscreenbackground/dist/bespoke-fullscreenbackground.js')
+    script(src='bower_components/bespoke-convenient/dist/bespoke-convenient.js')
+    script(src='bower_components/bespoke-indexfinger/dist/bespoke-indexfinger.js')
+    script(src='bower_components/bespoke-secondary/dist/bespoke-secondary.js')
+    script(src='bower_components/prism/prism.js')
+    script(src='scripts/main.js')
+    // endbuild

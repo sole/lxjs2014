@@ -41,11 +41,10 @@ html {
   padding-left: 1rem;
 }
 
-body > div {
+body {
 	display: flex;
 	flex-direction: column;
 	height: 100%;
-	xborder: 1px solid green;
 }
 
 h1 {

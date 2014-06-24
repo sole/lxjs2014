@@ -60,7 +60,6 @@ x-livecode {
 
 x-editor {
 	display: flex;
-	xborder: 1px dotted red;
 	height: 100%;
 }
 

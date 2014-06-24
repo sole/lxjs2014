@@ -14,8 +14,9 @@
 		var appendButtonSelector = this.hasAttribute('appendbutton') ? attr.appendbutton.value : null;
 
 		// layout
-		var divEditor = document.createElement('div');
+		var content = document.createElement('div');
 		var divLive = document.createElement('div');
+		var divEditor = document.createElement('div');
 
 		var editor = document.createElement('x-editor');
 		editor.setAttribute('src', src);
@@ -24,8 +25,12 @@
 		if(appendButtonSelector !== null) {
 			var button = document.createElement('button');
 			var insertionPoint = document.querySelector(appendButtonSelector);
+			var that = this;
 			button.innerHTML = 'code';
 			insertionPoint.appendChild(button);
+			button.addEventListener('click', function() {
+				that.toggleCode();
+			});
 		}
 
 		// If we have children bring them to the new divLive layer
@@ -35,9 +40,18 @@
 		}
 
 		// Now append the new divs here
-		this.appendChild(divEditor);
-		this.appendChild(divLive);
+		this.appendChild(content);
+		content.appendChild(divLive);
+		divLive.className = 'live';
+		content.appendChild(divEditor);
+		divEditor.className = 'editor';
 
+		this._divEditor = divEditor;
+	};
+
+	proto.toggleCode = function() {
+		console.log('show or show');
+		this._divEditor.classList.toggle('hidden');
 	};
 
 	document.registerElement('x-livecode', {

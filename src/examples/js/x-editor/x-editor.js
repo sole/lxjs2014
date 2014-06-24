@@ -26,21 +26,8 @@
 	var proto = Object.create(HTMLElement.prototype);
 
 	proto.createdCallback = function() {
-		console.log('oh hey');
 		
 		this.cm = null;
-
-		/*var codeSrc;
-		
-		if(this.attributes.src) {
-			codeSrc = this.attributes.src.value;
-		}
-		
-		if(codeSrc === undefined) {
-			this.onCodeLoaded('// No src specified');
-		} else {
-			this.loadCode(codeSrc);
-		}*/
 
 		this.addEventListener('keydown', function(e) {
 			if(e.metaKey && (e.key === 'e' || e.keyCode === 69)) {

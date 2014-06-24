@@ -56,7 +56,6 @@
 	proto.loadCode = function(url) {
 		var request = new XMLHttpRequest();
 		var that = this;
-		console.log('x-editor: loading script', url);
 		request.open('get', url, true);
 		request.responseType = 'text';
 		request.onload = function() {

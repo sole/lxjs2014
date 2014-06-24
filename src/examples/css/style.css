@@ -13,13 +13,6 @@
 	box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5);
 }
 
-x-editor {
-	height: 100%;
-}
-
-x-editor .CodeMirror {
-	height: 100%;
-}
 
 /* woa talk about specifity */
 div.CodeMirror span.CodeMirror-matchingbracket {
@@ -32,19 +25,46 @@ div.CodeMirror span.CodeMirror-matchingbracket {
 	background: #fee;
 }
 
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
 html, body {
   height: 100%;
 }
 
+/* so that I can scroll up and down if required */
 html {
   border-left: 2rem solid #ccc;
   padding-left: 1rem;
 }
 
+body > div {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	xborder: 1px solid green;
+}
+
 h1 {
 	font-family: monospace;
 	font-size: 40px;
-	margin: 0 0 10px 0;
 }
 
+x-livecode {
+	flex: 1;
+	background: #efefef;
+	display: flex;
+}
 
+x-editor {
+	display: flex;
+	xborder: 1px dotted red;
+	height: 100%;
+}
+
+x-editor .CodeMirror {
+	height: auto;
+}

@@ -10,8 +10,12 @@
 	</head>
 	<body>
 		<h1>Realtime visualisation</h1>
-		<div id="content"></div>
-		<x-livecode src="main.js" appendcontrols="h1" autoexec hidecode></x-livecode>
+		<x-livecode src="main.js" appendcontrols="h1" autoexec hidecode>
+			<!-- Creating this 'dummy' layer here so the script has a place into
+				which inserting the renderer canvas etc and it's not hardcoded
+				to document.body -->
+			<div id="content"></div>
+		</x-livecode>
 	</body>
 </html>
 

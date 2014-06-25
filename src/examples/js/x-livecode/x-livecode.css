@@ -14,8 +14,6 @@ x-livecode .editor {
   transition: opacity 0.5s ease-in;
 }
 
-/* + editor background has to be slightly transparent by default */
-
 x-livecode .editor.hidden {
   opacity: 0.1;
   pointer-events: none;
@@ -24,3 +22,14 @@ x-livecode .editor.hidden {
 x-livecode .editor.hidden * {
   pointer-events: none;
 }
+
+x-editor .CodeMirror {
+  height: auto;
+  text-shadow: 1px 1px 0px #fff;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+x-editor .CodeMirror-activeline-background {
+  background: rgba(0, 255, 255, 0.2);
+}
+

@@ -63,12 +63,3 @@ x-editor {
 	height: 100%;
 }
 
-x-editor .CodeMirror {
-	height: auto;
-	text-shadow: 1px 1px 0px #fff;
-	background: rgba(255, 255, 255, 0.4);
-}
-
-x-editor .CodeMirror-activeline-background {
-	background: rgba(0, 255, 255, 0.2);
-}

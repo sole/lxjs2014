@@ -28,9 +28,9 @@ var scene = new THREE.Scene();
 
 scene.add(new THREE.AmbientLight(0x111111));
 
-var light = new THREE.DirectionalLight(0xdfebff, 1.75);
+var light = new THREE.DirectionalLight(0xdfebff, 1);
 //light.position.set(0, 100, 0);
-light.position.set(0, 400, 0);
+light.position.set(0, 200, 0);
 light.position.multiplyScalar(1.3);
 
 light.castShadow = true;
@@ -47,14 +47,21 @@ light.shadowCameraFar = 1000;
 light.shadowDarkness = 0.5;
 scene.add(light);
 
-var planeGeometry = new THREE.PlaneGeometry(1000, 1000);
-var planeMaterial = new THREE.MeshPhongMaterial({ color: 0xFF0000 });
-//var planeMaterial = new THREE.MeshBasicMaterial({ color: 0xFF00FF, wireframe: true });
+
+var planeGeometry = new THREE.PlaneGeometry(5000, 5000, 100, 100);
+//var planeMaterial = new THREE.MeshPhongMaterial({ color: 0xcccccc });
+var planeMaterial = new THREE.MeshLambertMaterial({ color: 0x666666 });
+//var planeMaterial = new THREE.MeshBasicMaterial({ color: 0xFFFFFF, wireframe: true });
+//var planeMaterial = new THREE.MeshBasicMaterial({ color: 0xcccccc });
+planeMaterial.shading = THREE.FlatShading;
 var plane = new THREE.Mesh(planeGeometry, planeMaterial);
 plane.rotation.x = -Math.PI / 2;
-//plane.position.y = -5;
+plane.position.y = -5;
 plane.receiveShadow = true;
+plane.castShadow = true;
 scene.add(plane);
+
+messWithThisObject(plane);
 
 var u = 20;
 var geometry = new THREE.BoxGeometry(u, u, u);
@@ -68,10 +75,9 @@ content.appendChild( renderer.domElement );
 renderer.setSize(contentWidth, contentHeight);
 renderer.setClearColor( 0xff0000, 1.0 );
 
-var camera = new THREE.PerspectiveCamera( 90, contentWidth / contentHeight, 1, 100000 );
+var camera = new THREE.PerspectiveCamera( 60, contentWidth / contentHeight, 1, 100000 );
 var cameraTarget = new THREE.Vector3( 0, 0, 0 );
-var r = 300;
-camera.position.set(0, range, range);
+camera.position.set(0, 0, range);
 camera.lookAt( cameraTarget );
 
 var left = -u * numBars + u;
@@ -99,6 +105,21 @@ navigator.getUserMedia(
 		);
 
 
+function messWithThisObject(obj) {
+	var geometry = obj.geometry;
+	var vertices = geometry.vertices;
+	vertices.forEach(function(v) {
+		v.z += (Math.random() * 0.5 - 1) * 300;
+		//v.y += (Math.random() * 0.5 - 1) * 100;
+	});
+	
+	geometry.verticesNeedUpdate = true;
+	geometry.normalsNeedUpdate = true;
+	geometry.elementsNeedUpdate = true;
+
+	geometry.computeFaceNormals();
+}
+
 function onWindowResize( e ) {
 	contentWidth = content.clientWidth;
 	contentHeight = content.clientHeight;
@@ -115,9 +136,9 @@ function animate(timestamp) {
 
   updateVisualisation(analyserData);
 
-  var t = timestamp !== null ? timestamp * 0.0002 : 0;
-  //camera.position.set(range * Math.sin(t), range / 2, range * Math.cos(t));
-  //camera.lookAt(cameraTarget);
+  var t = timestamp !== null ? timestamp * 0.0001 : 0;
+  camera.position.set(range * Math.sin(t), range / 2, range * Math.cos(t));
+  camera.lookAt(cameraTarget);
 
   renderer.render(scene, camera);
   

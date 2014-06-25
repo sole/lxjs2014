@@ -2,7 +2,6 @@
 
 	var proto = Object.create(HTMLElement.prototype);
 
-	// attributes: src, autoexec, appendcontrols
 	proto.createdCallback = function() {
 
 		var that = this;
@@ -10,7 +9,7 @@
 		
 		// config
 		var src = this.hasAttribute('src') ? attr.src.value : null;
-		var showcode = this.hasAttribute('showcode');
+		var hidecode = this.hasAttribute('hidecode');
 		var autoexec = this.hasAttribute('autoexec');
 		var appendControlsSelector = this.hasAttribute('appendcontrols') ? attr.appendcontrols.value : null;
 
@@ -49,14 +48,22 @@
 			divLive.appendChild(child);
 		}
 
-		// Now append the new divs here
-		this.appendChild(content);
+		
+		// Now assemble the tree of divs hanging out of content
 		content.appendChild(divLive);
 		divLive.className = 'live';
 		content.appendChild(divEditor);
 		divEditor.className = 'editor';
 
 		this._divEditor = divEditor;
+
+		// Hide the code initially if required so it doesn't flash (?)
+		if(hidecode) {
+			divEditor.classList.add('hidden');
+		}
+
+		// Finally append the whole thing
+		this.appendChild(content);
 
 		if(autoexec) {
 			// XXX use a real callback instead of... this thing.

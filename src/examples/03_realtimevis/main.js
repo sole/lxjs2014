@@ -16,8 +16,8 @@ analyserData = new Uint8Array(analyser.frequencyBinCount);
 
 
 // 3D setup
-var sceneWidth = 320;
-var sceneHeight = 240;
+var contentWidth = 320;
+var contentHeight = 240;
 var range = 250;
 
 var content = document.getElementById('content');
@@ -65,10 +65,10 @@ var visualScale = 20;
 
 // TODO white on red background, +shadows
 content.appendChild( renderer.domElement );
-renderer.setSize(sceneWidth, sceneHeight);
+renderer.setSize(contentWidth, contentHeight);
 renderer.setClearColor( 0xff0000, 1.0 );
 
-var camera = new THREE.PerspectiveCamera( 90, sceneWidth / sceneHeight, 1, 100000 );
+var camera = new THREE.PerspectiveCamera( 90, contentWidth / contentHeight, 1, 100000 );
 var cameraTarget = new THREE.Vector3( 0, 0, 0 );
 var r = 300;
 camera.position.set(0, range, range);
@@ -88,15 +88,24 @@ for(var i = 0; i < numBars; i++) {
 
 // Starting the audio stream
 navigator.getUserMedia(
-  { audio: true },
-	function yay(stream) {
-    source = audioContext.createMediaStreamSource(stream);
-    source.connect(analyser);
-	},
-	function nope(err) {
-    console.err("oh noes", err);
-	}
-);
+		{ audio: true },
+		function yay(stream) {
+			source = audioContext.createMediaStreamSource(stream);
+			source.connect(analyser);
+		},
+		function nope(err) {
+			console.err("oh noes", err);
+		}
+		);
+
+
+function onWindowResize( e ) {
+	contentWidth = content.clientWidth;
+	contentHeight = content.clientHeight;
+	renderer.setSize( contentWidth, contentHeight );
+	camera.aspect = contentWidth / contentHeight;
+	camera.updateProjectionMatrix();
+}
 
 // rendering loop
 function animate(timestamp) {
@@ -131,6 +140,8 @@ function updateVisualisation(data) {
 }
 
 // GO GO GO GO
+onWindowResize();
+window.addEventListener( 'resize', onWindowResize, false );
 animate();
 
 

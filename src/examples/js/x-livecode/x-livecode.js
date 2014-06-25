@@ -2,7 +2,7 @@
 
 	var proto = Object.create(HTMLElement.prototype);
 
-	// attributes: showcode, src, autoexec, appendbutton
+	// attributes: src, autoexec, appendcontrols
 	proto.createdCallback = function() {
 
 		var attr = this.attributes;
@@ -11,7 +11,7 @@
 		var src = this.hasAttribute('src') ? attr.src.value : null;
 		var showcode = this.hasAttribute('showcode');
 		var autoxec = this.hasAttribute('autoexec');
-		var appendButtonSelector = this.hasAttribute('appendbutton') ? attr.appendbutton.value : null;
+		var appendControlsSelector = this.hasAttribute('appendcontrols') ? attr.appendcontrols.value : null;
 
 		// layout
 		var content = document.createElement('div');
@@ -22,13 +22,13 @@
 		editor.setAttribute('src', src);
 		divEditor.appendChild(editor);
 
-		if(appendButtonSelector !== null) {
-			var button = document.createElement('button');
-			var insertionPoint = document.querySelector(appendButtonSelector);
+		if(appendControlsSelector !== null) {
+			var insertionPoint = document.querySelector(appendControlsSelector);
+			var btnCode = document.createElement('button');
 			var that = this;
-			button.innerHTML = 'code';
-			insertionPoint.appendChild(button);
-			button.addEventListener('click', function() {
+			btnCode.innerHTML = 'code';
+			insertionPoint.appendChild(btnCode);
+			btnCode.addEventListener('click', function() {
 				that.toggleCode();
 			});
 		}
@@ -51,7 +51,6 @@
 
 
 	proto.toggleCode = function() {
-		console.log('show or show');
 		this._divEditor.classList.toggle('hidden');
 	};
 

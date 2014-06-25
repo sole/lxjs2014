@@ -5,12 +5,13 @@
 	// attributes: src, autoexec, appendcontrols
 	proto.createdCallback = function() {
 
+		var that = this;
 		var attr = this.attributes;
 		
 		// config
 		var src = this.hasAttribute('src') ? attr.src.value : null;
 		var showcode = this.hasAttribute('showcode');
-		var autoxec = this.hasAttribute('autoexec');
+		var autoexec = this.hasAttribute('autoexec');
 		var appendControlsSelector = this.hasAttribute('appendcontrols') ? attr.appendcontrols.value : null;
 
 		// layout
@@ -25,7 +26,6 @@
 
 		if(appendControlsSelector !== null) {
 			var insertionPoint = document.querySelector(appendControlsSelector);
-			var that = this;
 			
 			var btnRun = document.createElement('button');
 			btnRun.innerHTML = 'run';
@@ -57,6 +57,13 @@
 		divEditor.className = 'editor';
 
 		this._divEditor = divEditor;
+
+		if(autoexec) {
+			// XXX use a real callback instead of... this thing.
+			setTimeout(function() {
+				that.runAll();
+			}, 100);
+		}
 	};
 
 

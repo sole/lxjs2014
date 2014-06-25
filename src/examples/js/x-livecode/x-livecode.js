@@ -19,18 +19,28 @@
 		var divEditor = document.createElement('div');
 
 		var editor = document.createElement('x-editor');
+		this._editor = editor;
 		editor.setAttribute('src', src);
 		divEditor.appendChild(editor);
 
 		if(appendControlsSelector !== null) {
 			var insertionPoint = document.querySelector(appendControlsSelector);
-			var btnCode = document.createElement('button');
 			var that = this;
-			btnCode.innerHTML = 'code';
+			
+			var btnRun = document.createElement('button');
+			btnRun.innerHTML = 'run';
+			insertionPoint.appendChild(btnRun);
+			btnRun.addEventListener('click', function() {
+				that.runAll();
+			});
+
+			var btnCode = document.createElement('button');
+			btnCode.innerHTML = 'edit';
 			insertionPoint.appendChild(btnCode);
 			btnCode.addEventListener('click', function() {
 				that.toggleCode();
 			});
+
 		}
 
 		// If we have children bring them to the new divLive layer
@@ -52,6 +62,10 @@
 
 	proto.toggleCode = function() {
 		this._divEditor.classList.toggle('hidden');
+	};
+
+	proto.runAll = function() {
+		this._editor.runAllCode();
 	};
 
 

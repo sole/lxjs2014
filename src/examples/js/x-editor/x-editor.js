@@ -107,6 +107,11 @@
 
 	};
 
+	proto.runAllCode = function() {
+		var code = this.cm.getValue();
+		execute(code);
+	};
+
 	document.registerElement('x-editor', {
 		prototype: proto
 	});

@@ -34,8 +34,8 @@
 		}
 
 		// If we have children bring them to the new divLive layer
-		while(this.childElementCount) {
-			var child = this.childNodes[0];
+		while(this.firstChild) {
+			var child = this.firstChild;
 			divLive.appendChild(child);
 		}
 
@@ -49,10 +49,12 @@
 		this._divEditor = divEditor;
 	};
 
+
 	proto.toggleCode = function() {
 		console.log('show or show');
 		this._divEditor.classList.toggle('hidden');
 	};
+
 
 	document.registerElement('x-livecode', {
 		prototype: proto

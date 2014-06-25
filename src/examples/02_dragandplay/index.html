@@ -4,16 +4,18 @@
 		<meta charset="utf-8">
 		<title>Drag And Play</title>
 		<script src="../lib/platform/platform.js"></script>
-		<link rel="import" href="../js/x-editor/element.html">
+		<link rel="import" href="../js/x-livecode/element.html">
 		<link rel="stylesheet" href="../css/style.css">
 	</head>
 	<body>
 		<h1>Drag and Play</h1>
 
-		<p>drop a sound file into this window so we can play it&mdash;or pick a file: <input type="file" id="filePicker" /></p>
-		<canvas id="waveCanvas" width="320" height="240"></canvas>
-		<canvas id="oscilloscopeCanvas" width="320" height="240"></canvas>
-		<x-editor src="main.js"></x-editor>
+		<x-livecode src="main.js" appendbutton="h1">
+			<p>drop a sound file into this window so we can play it&mdash;or pick a file: <input type="file" id="filePicker" /></p>
+			<canvas id="waveCanvas" width="320" height="240"></canvas>
+			<canvas id="oscilloscopeCanvas" width="320" height="240"></canvas>
+		</x-livecode>
+
 	</body>
 </html>
 

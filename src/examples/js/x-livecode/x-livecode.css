@@ -1,0 +1,26 @@
+x-livecode {
+  position: relative;
+}
+
+x-livecode > div > div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+x-livecode .editor {
+  transition: opacity 0.5s ease-in;
+}
+
+/* + editor background has to be slightly transparent by default */
+
+x-livecode .editor.hidden {
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+x-livecode .editor.hidden * {
+  pointer-events: none;
+}

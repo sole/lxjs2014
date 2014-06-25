@@ -34,7 +34,6 @@ light.position.set(0, 200, 0);
 light.position.multiplyScalar(1.3);
 
 light.castShadow = true;
-//light.shadowCameraVisible = true;
 light.shadowMapWidth = 1024;
 light.shadowMapHeight = 1024;
 var d = 400;
@@ -47,12 +46,11 @@ light.shadowCameraFar = 1000;
 light.shadowDarkness = 0.5;
 scene.add(light);
 
+scene.fog = new THREE.Fog(0xFF0000, 10, 1000);
+
 
 var planeGeometry = new THREE.PlaneGeometry(5000, 5000, 100, 100);
-//var planeMaterial = new THREE.MeshPhongMaterial({ color: 0xcccccc });
-var planeMaterial = new THREE.MeshLambertMaterial({ color: 0x666666 });
-//var planeMaterial = new THREE.MeshBasicMaterial({ color: 0xFFFFFF, wireframe: true });
-//var planeMaterial = new THREE.MeshBasicMaterial({ color: 0xcccccc });
+var planeMaterial = new THREE.MeshPhongMaterial({ color: 0xcccccc });
 planeMaterial.shading = THREE.FlatShading;
 var plane = new THREE.Mesh(planeGeometry, planeMaterial);
 plane.rotation.x = -Math.PI / 2;
@@ -70,7 +68,6 @@ var numBars = 20;
 var row = [];
 var visualScale = 20;
 
-// TODO white on red background, +shadows
 content.appendChild( renderer.domElement );
 renderer.setSize(contentWidth, contentHeight);
 renderer.setClearColor( 0xff0000, 1.0 );

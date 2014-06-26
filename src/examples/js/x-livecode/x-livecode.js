@@ -66,10 +66,9 @@
 		this.appendChild(content);
 
 		if(autoexec) {
-			// XXX use a real callback instead of... this thing.
-			setTimeout(function() {
+			editor.addEventListener('loaded', function() {
 				that.runAll();
-			}, 100);
+			});
 		}
 	};
 

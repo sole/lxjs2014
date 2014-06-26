@@ -86,6 +86,11 @@
 			}
 		);
 		this.cm = cm;
+
+		var evt = document.createEvent('CustomEvent');
+		evt.initCustomEvent('loaded', false, false, {});
+		this.dispatchEvent(evt);
+
 	};
 
 	proto.runCode = function() {

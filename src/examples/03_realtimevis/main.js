@@ -107,7 +107,6 @@ function messWithThisObject(obj) {
 	var vertices = geometry.vertices;
 	vertices.forEach(function(v) {
 		v.z += (Math.random() * 0.5 - 1) * 300;
-		//v.y += (Math.random() * 0.5 - 1) * 100;
 	});
 	
 	geometry.verticesNeedUpdate = true;
@@ -126,19 +125,22 @@ function onWindowResize( e ) {
 }
 
 // rendering loop
+function render(timestamp) {
+	analyser.getByteFrequencyData(analyserData); // 0..255
+
+	updateVisualisation(analyserData);
+
+	var t = timestamp !== null ? timestamp * 0.0001 : 0;
+	camera.position.set(range * Math.sin(t), range / 2, range * Math.cos(t));
+	camera.lookAt(cameraTarget);
+
+	renderer.render(scene, camera);
+
+}
+
 function animate(timestamp) {
-  requestAnimationFrame(animate);
-  
-  analyser.getByteFrequencyData(analyserData); // 0..255
-
-  updateVisualisation(analyserData);
-
-  var t = timestamp !== null ? timestamp * 0.0001 : 0;
-  camera.position.set(range * Math.sin(t), range / 2, range * Math.cos(t));
-  camera.lookAt(cameraTarget);
-
-  renderer.render(scene, camera);
-  
+	requestAnimationFrame(animate);
+	render(timestamp);
 }
 
 function updateVisualisation(data) {
@@ -148,7 +150,6 @@ function updateVisualisation(data) {
   var skipLength = Math.round(dataLength / numBars);
 
   for(var j = 0; j < numBars; j++) {
-    
     var v =  data[dataIndex] / 255.0;
     dataIndex += skipLength;
     var bar = row[j];

@@ -8,7 +8,7 @@ var audioContext = new AudioContext();
 var source;
 var analyser = audioContext.createAnalyser();
 var analyserData;
-analyser.connect(audioContext.destination);
+//analyser.connect(audioContext.destination);
 analyser.fftSize = 2048;
 analyser.smoothingTimeConstant = 0.5;
 analyserData = new Uint8Array(analyser.frequencyBinCount);

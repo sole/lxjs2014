@@ -3,7 +3,7 @@
 
 ## Video
 
-[Watch it](https://www.youtube.com/watch?v=Bqj9LDszlDY&feature=youtu.be)
+[Watch it](https://www.youtube.com/watch?v=Bqj9LDszlDY&feature=youtu.be).
 
 ## View slides online
 
@@ -32,6 +32,6 @@ Because I'm running on the bleeding edge of the web components world, if you wan
 
 The more-detailed-reason is that I'm using `platform.js` to polyfill things, and it gets confused with the intermediate support for web components in Firefox.
 
-This presentation wa built with [generator-bespoke](https://github.com/markdalgleish/generator-bespoke), and a couple of extra plugins I built, if you were curious about it.
+This presentation was built with [generator-bespoke](https://github.com/markdalgleish/generator-bespoke), and a couple of extra plugins I built, if you were curious about it.
 
 
